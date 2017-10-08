@@ -1,4 +1,4 @@
-# cppSockets
+# cppSockets - C++ examples
 C++ socket server, client applications from ibm web page
 
 #### References
