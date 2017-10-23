@@ -1,3 +1,6 @@
+// From:
+// http://bobah.net/d4d/source-code/networking/sss-client-socket
+//
 #include <openssl/ssl.h>
 #include <openssl/bio.h>
 #include <openssl/err.h>
