@@ -291,6 +291,10 @@ void boo(int client, SSL_CTX *ctx, string SenderClientIP){
         
         // if fork() create new proccess pid in child proccess == 0
         if(client > 0){
+
+            // Add timeout in seconds to child socket
+            socket_timeout(10, client);
+
             // this doing only in child proccess
             int childPid = getpid();
             cout << " [NEW_CONNECTION_PID]" << childPid << endl;
@@ -299,7 +303,7 @@ void boo(int client, SSL_CTX *ctx, string SenderClientIP){
             ssl = SSL_new(ctx);
 
             // Renegotiation ssl
-            SSL_set_options(ssl, SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION);
+            // SSL_set_options(ssl, SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION);
 
             SSL_set_fd(ssl, client);
             // ShowCerts(ssl);
@@ -354,9 +358,7 @@ int main(){
 	        if(client < 0){
 	        	cout << "Error socket" << endl;
 	        }else{
-                cout << "New client " << endl;
-	        	// Add timeout in seconds to child socket
-	        	// socket_timeout(10, client);
+                cout << "New client " << endl;        	
 
 				// Threads array (ile tredów) c++11                
 				thread t;
